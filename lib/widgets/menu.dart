@@ -1,137 +1,84 @@
 import 'package:flutter/material.dart';
-
-import 'course_headline.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Menu extends StatelessWidget {
-  const Menu({super.key});
-   
+  const Menu(
+      {Key? key,
+      required this.startColor,
+      required this.endColor,
+      required this.courseHeadline,
+      required this.headlinecolor,
+      required this.courseTitle,
+      required this.courseImage})
+      : super(key: key);
+
+  final int startColor, endColor,headlinecolor;
+  final String courseHeadline, courseTitle, courseImage;
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: <Widget>[
-       Container(
-       padding: const EdgeInsets.all(06),
-       width: 170, 
-        height: 270, 
+    return Padding(
+      padding: const EdgeInsets.only(
+        right: 26,
+      ),
+      child: Container(
+        width: 246,
+        height: 349,
         decoration: BoxDecoration(
-        gradient: const LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Color.fromARGB(255, 218, 115, 236),Colors.purple],
-      ),
-      borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(22),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: const Alignment(1, 0.0),
+            colors: <Color>[
+              Color(startColor),
+              Color(endColor),
+            ],
+          ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children:<Widget>[
-            const CourseHeadline(
-              headline: 'Recommended',
+        child: Stack(
+          children: [
+            Positioned(
+              top: 15,
+              left: 11,
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                height: 39,
+                decoration: BoxDecoration(
+                   color: Color(headlinecolor),
+                  borderRadius: BorderRadius.circular(36),
+                ),
+                child: Text(
+                  courseHeadline,
+                  style: GoogleFonts.roboto(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
             ),
-          const Align(
-        alignment: Alignment.topLeft,
-        child: Text(
-          'UI/UX Designer Beginner',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-          ),
-        ),
-      ),
-          Image.asset('assets/images/Saly-10.png',
-          width: 110,
-          height: 170,
-          fit: BoxFit.cover,
-          ),
+            Positioned(
+              top: 80,
+              left: 14,
+              child: Text(
+                courseTitle,
+                style: GoogleFonts.roboto(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Image.asset(
+                courseImage,
+                scale: 1.2,
+              ),
+            ),
           ],
         ),
-      ),
-
-      const SizedBox(
-              width: 20,
-        ),
-
-      Container(
-       padding: const EdgeInsets.all(06),
-       width: 170, 
-        height: 270, 
-        decoration: BoxDecoration(
-        gradient: const LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Color.fromARGB(255, 255, 183, 75),Colors.orange],
-      ),
-      borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children:<Widget>[
-            const CourseHeadline(
-              headline: 'New Class',
-            ),
-             const Align(
-        alignment: Alignment.topLeft,
-        child: Text(
-          'Graphic Design Master',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-          ),
-        ),
-      ),
-          Image.asset ('assets/images/Saly-36.png',
-          width: 130,
-          height: 170,
-          fit: BoxFit.cover,
-          ),
-          ]
-        ),
-      
-      ),
-      const SizedBox(
-              width: 20,
-            ),
-      Container(
-        padding: const EdgeInsets.all(06),
-       width: 170, 
-        height: 270, 
-        decoration: BoxDecoration(
-        gradient: const LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Color.fromARGB(255, 102, 85, 255),Color.fromARGB(255, 17, 0, 255)],
-      ),
-      borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children:<Widget>[
-            const CourseHeadline(
-              headline: 'New Class',
-            ),
-          const Align(
-          alignment: Alignment.topLeft,
-          child: Text(
-          'Mobile Development',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-          ),
-        ),
-      ),
-          Image.asset ('assets/images/Saly-19.png',
-          width: 170,
-          height: 190,
-          fit: BoxFit.cover,
-          ),
-          ]
-        ),
-      ),
-      ]
       ),
     );
   }

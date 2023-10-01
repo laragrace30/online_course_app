@@ -1,159 +1,127 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class VerticalMenu extends StatelessWidget {
-  const VerticalMenu({super.key});
+  const VerticalMenu(
+      {Key? key,
+      required this.courseImage,
+      required this.courseTitle,
+      required this.courseDuration,
+      required this.courseRating})
+      : super(key: key);
+
+  final String courseImage, courseTitle, courseDuration;
+  final double courseRating;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Align(
-          alignment: Alignment.topLeft,
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  width: 350,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 97, 68, 167),
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.25),
-                        spreadRadius: 0,
-                        blurRadius: 13,
-                        offset: const Offset(0, 4),
-                      )
-                    ],
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: 8,
+      ),
+      child: SizedBox(
+        height: 134,
+        child: Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            Container(
+              height: 92,
+              width: MediaQuery.of(context).size.width -
+                  (MediaQuery.of(context).size.width * 0.13),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: const Color(0xFF3E3A6D),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 13,
+                    offset: const Offset(0, 4),
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Image.asset(
-                        'assets/images/Saly-24.png',
-                        width: 100,
-                        height: 100,
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 26,
+                bottom: 19,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    height: 115,
+                    width: 115,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(courseImage),
                       ),
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Column(
-                          children: <Widget>[
-                            const Text(
-                              'Flutter Developer',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                            const Text(
-                              '8 hours',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 175, 175, 175),
-                                fontSize: 12,
-                              ),
-                            ),
-                            RatingBar.builder(
-                                initialRating: 5,
-                                minRating: 1,
-                                direction: Axis.horizontal,
-                                allowHalfRating: true,
-                                itemCount: 5,
-                                itemSize: 18,
-                                itemPadding:
-                                   const EdgeInsets.symmetric(horizontal: 1),
-                                itemBuilder: (context, _) => const Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                    ),
-                                onRatingUpdate: (rating) {
-                                  if (kDebugMode) {
-                                    print(rating);
-                                  }
-                                }),
-                          ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          courseTitle,
+                          style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  width: 350,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 97, 68, 167),
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.25),
-                        spreadRadius: 0,
-                        blurRadius: 13,
-                        offset: const Offset(0, 4),
-                      )
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Image.asset(
-                        'assets/images/Saly-13.png',
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      ),
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Column(
-                          children: <Widget>[
-                            const Text(
-                              'Full Stack Javascript',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                            const Text(
-                              '6 hours',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 175, 175, 175),
-                                fontSize: 12,
-                              ),
-                            ),
-                            RatingBar.builder(
-                                initialRating: 5,
-                                minRating: 1,
-                                direction: Axis.horizontal,
-                                allowHalfRating: true,
-                                itemCount: 5,
-                                itemSize: 18,
-                                itemPadding:
-                                   const EdgeInsets.symmetric(horizontal: 1),
-                                itemBuilder: (context, _) => const Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                    ),
-                                onRatingUpdate: (rating) {
-                                  if (kDebugMode) {
-                                    print(rating);
-                                  }
-                                }),
-                          ],
+                        Text(
+                          courseDuration,
+                          style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFF8C8C8C),
+                            fontSize: 12,
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                )
-              ])),
+                        RatingBar.builder(
+                          initialRating: courseRating,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemSize: 18,
+                          itemPadding:
+                              const EdgeInsets.symmetric(horizontal: 1),
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: Color(0xFFF4C465),
+                          ),
+                          onRatingUpdate: (rating) {
+                            if (kDebugMode) {
+                              print(rating);
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 34,
+              right: 0,
+              child: Container(
+                height: MediaQuery.of(context).size.width * 0.06,
+                width: MediaQuery.of(context).size.width * 0.06,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFFEB53A2),
+                ),
+                child: const Icon(Icons.play_arrow, color: Colors.white),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

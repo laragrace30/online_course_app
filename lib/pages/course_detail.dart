@@ -34,6 +34,7 @@ class _CourseDetailState extends State<CourseDetail> {
                   ),
                   image: DecorationImage(
                       alignment: Alignment.bottomRight,
+                      scale: 0.5,
                       image: AssetImage('assets/images/Saly-36.png'))),
             ),
             Padding(
@@ -88,11 +89,9 @@ class _CourseDetailState extends State<CourseDetail> {
                   const SizedBox(
                     height: 50,
                   ),
-                  const Column(
-                    children: [
+                  const Column(children: [
                     CourseDetailList(),
-                    ]
-                  )
+                  ])
                 ],
               ),
             ),
